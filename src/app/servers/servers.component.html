@@ -1,0 +1,28 @@
+<button class="btn btn-primary" (click)="showAndCount()">Display Details</button>
+<p *ngIf="showDetails">Secret password = tuna</p>
+<p *ngFor="let item of countList; let i = index" [ngClass]="{log: item > 4}">{{ item }}</p>
+
+<input type="text" class="form-control" [(ngModel)]="userName">
+<p>{{userName}}</p>
+<!-- <button class="btn btn-warning" [disabled]="userName === ''" (click)="onUpdateUserName($event)">Reset User</button> -->
+<!-- Another simplier approach to reset the name -->
+<button class="btn btn-warning" [disabled]="userName === ''" (click)="userName = ''">Reset User</button>
+<br>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
+<!-- Two way binding: more dynamic -->
+
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<div>{{serverName}}</div>
+<br class="mt-5">
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">
+  Add Server
+</button>
+<p *ngIf="serverCreated; else noServer">Server is created as {{ serverName }}</p>
+<ng-template #noServer>
+    <p>No server created yet!</p>
+</ng-template>
+<p [innerText]="allowNewServer"></p>
+<p>
+    servers works!</p>
+<p>{{ serverCreationStatus }}</p>
+<app-server *ngFor="let server of serverList"></app-server>
