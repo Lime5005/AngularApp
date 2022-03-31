@@ -1,5 +1,12 @@
 <div class="container">
     <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <app-active-users [users]="activeUsers" (userSetToInactive)="onSetToInactive($event)"></app-active-users>
+            <app-inactive-users [users]="inactiveUsers" (userSetToActive)="onSetToActive($event)"></app-inactive-users>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
         <p appBasicHighlight>Style me with basic highlight directive!</p>
         <p appBetterHighlight>Style with better highlight!</p>
         <div class="col-xs-12">
